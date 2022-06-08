@@ -3,15 +3,14 @@ package olivermakesco.de.kotlin.test
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
 
-
 /**
  * RegistryDsl class, used for inputting a mod id before registering
- * @param modid The modid to register under
+ * @param modid The mod id to register under
  * @param action The DSL action
  *
  * @author Oliver-makes-code (Emma)
  * */
-class RegistryDsl(private val modid: String, action: RegistryDsl.() -> Unit) {
+class RegistryDsl(private val modId: String, action: RegistryDsl.() -> Unit) {
     init {
         apply(action)
     }
@@ -24,7 +23,7 @@ class RegistryDsl(private val modid: String, action: RegistryDsl.() -> Unit) {
      * @author Oliver-makes-code (Emma)
      * */
     fun <T> Registry<T>.register(name: String, t: T) {
-        Registry.register(this, Identifier(modid, name), t)
+        Registry.register(this, Identifier(modId, name), t)
     }
 }
 /**
@@ -39,7 +38,7 @@ inline operator fun <reified T> Registry<T>.invoke(action: Registry<T>.() -> Uni
 
 /**
  * Used for registering an object, uses the mod id provided in the constructor
- * @param identifier the Identifier to register under
+ * @param identifier The Identifier to register under
  * @param t The object to register
  *
  * @author Oliver-makes-code (Emma)
