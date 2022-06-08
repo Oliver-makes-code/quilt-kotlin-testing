@@ -10,9 +10,24 @@ import net.minecraft.util.registry.Registry
  *
  * @author Oliver-makes-code (Emma)
  * */
-class RegistryDsl(private val modId: String, action: RegistryDsl.() -> Unit) {
-    init {
+class RegistryDsl {
+    private val modId: String
+    constructor(modId: String, action: RegistryDsl.() -> Unit) {
+        this.modId = modId
         apply(action)
+    }
+    constructor(modId: String) {
+        this.modId = modId
+    }
+
+    /**
+     * Allows you to use the DSL with a preexisting insance
+     * @param action The DSL action
+     *
+     * @author Oliver-makes-code (Emma)
+     * */
+    inline infix fun with(action: RegistryDsl.() -> Unit): RegistryDsl {
+        return apply(action)
     }
 
     /**
