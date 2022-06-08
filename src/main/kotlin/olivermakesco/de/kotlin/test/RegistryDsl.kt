@@ -31,7 +31,7 @@ class RegistryDsl(private val modid: String, action: RegistryDsl.() -> Unit) {
  * Base registry DSL, allows you to call the register functions one after another
  * @param action The DSL action
  *
- * @author Oliver-makes-code (Emm
+ * @author Oliver-makes-code (Emma)
  * */
 inline operator fun <reified T> Registry<T>.invoke(action: Registry<T>.() -> Unit) {
     apply(action)
